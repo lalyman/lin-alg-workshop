@@ -84,10 +84,10 @@ Suppose we consider resting heart rate (HR) and diastolic blood pressure (BP) da
 
 
 
-For OLS, there is _p = 1_ explanatory variable. Similarly, pca determines its linear model from _m = 1_ principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
+For OLS, there is _p_ = 1 explanatory variable. Similarly, pca determines its linear model from _m_ = 1 principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
 
 <p align = "center">
-<img src="one_plot-centered-heart-data.png" alt="drawing" align = "center" />
+<img src="one-plot-centered-heart-data.png" alt="drawing" align = "center" />
 </p>
 
 In particular, 
