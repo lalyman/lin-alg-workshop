@@ -42,7 +42,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 **Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
 
 <p align = "center">
-<a href="https://www.codecogs.com/eqnedit.php?latex=y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="y\approx \sum_{j=1}^p \beta_j x_j" /></a>
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="\large y\approx \sum_{j=1}^p \beta_j x_j" />
 </p>
 
 for some real-valued _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>  &mdash; we take several measurements of the explanatory variables _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable $y$. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
