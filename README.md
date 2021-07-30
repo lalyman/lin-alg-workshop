@@ -5,7 +5,7 @@ This is the accompanying code to the course **Linear Algebra** in the [ICME Summ
 * This Github repository will be periodically updated before and immediately after the workshop with additional materials, so be sure to occasionally **refresh** this page to have the most relevant information!
 
 
-The Jupyter notebooks `svd-ellipsoid`, `pca-vs-linear-regression`, and `pca-and-cancer-detection` are provided for you to explore; they can be viewed statically by clicking on the corresponding links above. To use these notebooks *interactively* -- that is, to adjust and execute code blocks, dynamically tune some figure parameters, etc. -- 
+The Jupyter notebooks `svd-ellipsoid`, `pca-vs-linear-regression`, and `pca-and-cancer-detection` are provided for you to explore; they can be viewed statically by clicking on the corresponding links above. To use these notebooks *interactively* &mdash; that is, to adjust and execute code blocks, dynamically tune some figure parameters, etc. &mdash; 
 you have the options discussed in the following section.
 
 * Using these modules interactively is **not required nor essential for you as a course participant**; rather, the option is given as an additional resource. 
@@ -21,7 +21,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 1. Configure your personal workspace to run Jupyter notebooks. 
 
   This is the best choice for interacting with the modules in a long-term manner. You will be able to save any changes you make and run your code more efficiently. There are dozens of tutorials on how to set this up! 
-  The cons are that this takes some time and any issues that arise can be very specific to the context of your workspace computer -- for instance, we would not be able to troubleshoot on-the-fly during the Zoom lecture without addressing each person's issues individually. That being said, the techincal solutions are *very often* a quick Google search away! 
+  The cons are that this takes some time and any issues that arise can be very specific to the context of your workspace computer &mdash; for instance, we would not be able to troubleshoot on-the-fly during the Zoom lecture without addressing each person's issues individually. That being said, the techincal solutions are *very often* a quick Google search away! 
   
   
   
@@ -29,7 +29,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
   
 2. Click on the following Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) or click on the link [https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) directly. 
 
-  to play with the notebooks in your browser -- no configurations or installations required. Phew! Keep in mind that you cannot save your changes this way.
+  to play with the notebooks in your browser &mdash; no configurations or installations required. Phew! Keep in mind that you cannot save your changes this way.
   
   * After hitting the link, *it takes the Binder service a few minutes to generate the Github repository for your use*, but you should be able to view its progress along the way in the Build Log.
   * If you navigate away from the browser tab, the link will time out at some point and need to be **regenerated** by clicking [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) again.
