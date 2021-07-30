@@ -100,4 +100,6 @@ In particular,
 <img src="centered-heart-data.png" alt="drawing" align = "center" />
 </p>
 
-## 2 Module `svd-ellipsoid`
+![me](./animate.gif)
+
+## 2. Module `svd-ellipsoid`
