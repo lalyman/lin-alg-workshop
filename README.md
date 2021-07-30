@@ -100,6 +100,5 @@ In particular,
 <img src="centered-heart-data.png" alt="drawing" align = "center" />
 </p>
 
+We can see below that when defining our errors/residuals via OLS, the sum of squared errors is minimized precisely when the linear model matches the regression line.
 ![OLS_1_gif](./animation.gif)
-
-## 2. Module `svd-ellipsoid`
