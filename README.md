@@ -13,6 +13,7 @@ you have the options discussed in the following section.
 
 Each module is meant to be an *introductory, light-hearted, and hands-on exploration* of certain techniques in data science rather than an exhaustive overview of the relevant details. While we will try to make the Jupyter notebooks self-contained in terms of notation and descriptions, they are ultimately supplementary materials that should be viewed in the context of the lectures. 
 
+
 ## Interactive Modules
 
 To adjust code, execute chunks of Python, reproduce results, and play with figure animations/sliders, you have the following options.
@@ -34,5 +35,67 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
   * After hitting the link, *it takes the Binder service a few minutes to generate the Github repository for your use*, but you should be able to view its progress along the way in the Build Log.
   * If you navigate away from the browser tab, the link will time out at some point and need to be **regenerated** by clicking [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) again.
 
+## 1. Module `pca-vs-linear-regression`
+
+### 1.1. Introduction
+
+**Linear regression** is a model that assumes a linear relationship between some input parameters $x_1, \ldots, x_p$ and the single output variable $y$. 
+More specifically, it assumes that the output variable $y$ can be well estimated by a linear combination of the input variables $x_1, \ldots, x_p$, i.e. $y \approx \sum_{j = 1}^p \beta_j x_j$ for some real-valued $\beta_1, \ldots, \beta_p$ coefficients. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of $\beta_1, \ldots, \beta_p$ &mdash; we take several measurements of the explanatory variables $x_1, \ldots, x_p$ and the response variable $y$. If the number of parameters $p = 1$, this means that there is an approximate linear dependency between $y$ and a single input variable $x$, as shown in the following image.
+
+![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
+
+The dots in blue represent the measurements of $(x,y)$, which are our *data points.*  The red line is referred to as the *best fit straight line* or the *regression line*; this is the linear relationship that estimates the dependency between $x$ and $y$. One of the most common procedures for picking the regression line is **ordinary least squares** (OLS), which we will discuss later in further detail.
+
+**Principal component analysis (pca)** is a linear model that estimates the response variable $y$ in terms of *feature variables* (or *principal components*) $v_1, \ldots, v_m$, where each feature $v_i$ is itself a linear combination of the $x_1, \ldots, x_p$ and $m \le p.$ We can think of this as a change of coordinates that re-expresses $y$ in terms of a new, more minimal coordinate system. 
+
+As a contrived example, suppose we are trying to determine the perimeter $y$ of a rectangle in terms of the explanatory variables width $(x_1)$ and height $(x_2).$ Linear regression via OLS would give us the best fit line $y = 2 x_1 + 2 x_2$ (which of course we know). However, pca might define the *single* princical componet $v_1 = x_1 + x_2$, in which case we would have $y = 2 v_1$ in terms of this new variable. This is an example of *dimension reduction* for PCA, since we reduced the number of independent, explanatory variables from 2 to 1. 
+
+However, sometimes pca cannot perform dimension reduction, so the number of principal components $m$ is the same as the number of original explanatory variables $p$ in OLS. What happens then? Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of $y$ and the $y$-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
+
+1. OLS defines error via the distance between a data point and the fitted line in the direction *parallel to the dependent variable axis*. So OLS picks the (unique) fitted line such that the sum of squared distances parallel to the dependent axis is minimized.
+    1. If $y \sim x$ ($y$ is regressed on $x$), we regard $y$ as the response variable in the data points $(x, y)$. OLS picks the fitted line such that the sum of *vertical distances* between each data point and the line is as small as possible.
+    2. If $x \sim y$ ($x$ is regressed on $y$), we regard $x$ as the response variable in the data points $(x, y)$. OLS selects the fitted line such that the the sum of *horizontal distances* between each data point and the line is minimized.
+
+2. In contrast, pca defines error via the *perpendicular distance* between a data point and the fitted line. That is, pca minimizes the orthogonal projections of the linear approximation onto the actual data.
+
+To establish the visual and geometric intuition at the heart of these methods, we consider the following numerical example. Aftewards, we explain more specifically how the methods are implemented and which objective functions they are optimizing. For the details on how pca is implemented in practice (e.g. How do we determine the feature variables?), see the module `pca-and-cancer-detection`. 
+
+### 1.2. Numerical Application & Example: Heart health
+
+All code for this section is contained in the Jupyter notebook `pca-vs-linear-regression`.
+
+Suppose we consider resting heart rate (HR) and diastolic blood pressure (BP) data for healthy adolescent women aged 14 - 16. The data was synthetically generated based off the means and standard deviations from actual patient data given in the following [journal article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5444886/) by J. Casonatto et al. 
+
+| Heart Rate (Beats Per Minute, BPM) | Diastolic Blood Pressure (mmHg)  |
+| ------------- | ------------- |
+|  69.57  | 76.90  |
+| 71.81  | 66.66  |
+|71.62 | 46.56 |
+| 58.59 |69.39 |
+|65.18 |  62.82 |
+| 62.27 | 60.44 |
+| 65.96 | 72.60 |
+| 59.25 | 60.56 |
+| 61.68 | 82.86 |
+| 49.48 | 42.08 |
 
 
+
+For OLS, there is $p = 1$ explanatory variable. Similarly, pca determines its linear model from $m = 1$ principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
+
+<p align = "center">
+<img src="one_plot-centered-heart-data.png" alt="drawing" align = "center" />
+</p>
+
+In particular, 
+
+1. regressing blood pressure onto heart rate (BP ~ HR) minimizes vertical errors,
+2. regressing heart rate onto blood pressure (HR ~ BP) mininmizes horizontal errors, and
+3. pca minimizes perpendicular projections/errors.
+
+<p align = "center">
+<img src="centered-heart-data.png" alt="drawing" align = "center" />
+</p>
+### 
+
+## 2 Module `svd-ellipsoid`
