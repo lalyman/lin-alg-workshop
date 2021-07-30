@@ -39,8 +39,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 
 ### 1.1. Introduction
 
-**Linear regression** is a model that assumes a linear relationship between some input parameters $x_1, \ldots, x_p$ and the single output variable $y$. 
-More specifically, it assumes that the output variable $y$ can be well estimated by a linear combination of the input variables $x_1, \ldots, x_p$, i.e. $y \approx \sum_{j = 1}^p \beta_j x_j$ for some real-valued $\beta_1, \ldots, \beta_p$ coefficients. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of $\beta_1, \ldots, \beta_p$ &mdash; we take several measurements of the explanatory variables $x_1, \ldots, x_p$ and the response variable $y$. If the number of parameters $p = 1$, this means that there is an approximate linear dependency between $y$ and a single input variable $x$, as shown in the following image.
+**Linear regression** is a model that assumes a linear relationship between some input parameters <img src="https://render.githubusercontent.com/render/math?math=x_1,\ldots, x_p"> and the single output variable _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables <img src="https://render.githubusercontent.com/render/math?math=x_1,\ldots, x_p">  i.e. <img src="https://render.githubusercontent.com/render/math?math=y\approx \sum_{j = 1}^p \beta_j x_j"> for some real-valued <img src="https://render.githubusercontent.com/render/math?math=\beta_1, \ldots, \beta_p"> coefficients. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of <img src="https://render.githubusercontent.com/render/math?math=\beta_1, \ldots, \beta_p">  &mdash; we take several measurements of the explanatory variables $x_1, \ldots, x_p$ and the response variable $y$. If the number of parameters _p = 1_, this means that there is an approximate linear dependency between $y$ and a single input variable $x$, as shown in the following image.
 
 ![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
 
@@ -96,6 +95,5 @@ In particular,
 <p align = "center">
 <img src="centered-heart-data.png" alt="drawing" align = "center" />
 </p>
-### 
 
 ## 2 Module `svd-ellipsoid`
