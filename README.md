@@ -1,5 +1,5 @@
 # Linear Algebra Workshop
-This is the accompanying code to the course **Linear Algebra** in the ICME Summer Workshops in Data Science (2021) series, taught by Professor Margot Gerritsen and Laura Lyman. 
+This is the accompanying code to the course **Linear Algebra** in the [ICME Summer Workshops in Data Science](https://icme.stanford.edu/icme-summer-workshops-2021-fundamentals-data-science#LinAlg) (2021) series, taught by Professor Margot Gerritsen and Laura Lyman. 
 
 * The course is on **Monday, August 2nd** and **Tuesday, August 3rd** from **8:00 - 11:00 am.** 
 * This Github repository will be periodically updated before and immediately after the workshop with additional materials, so be sure to occasionally **refresh** this page to have the most relevant information!
@@ -33,7 +33,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 
   to play with the notebooks in your browser --- no configurations or installations required. Phew! Keep in mind that you cannot save your changes this way.
   
-  * After hitting the link, *it takes the Binder service a few minutes to generate the Github repository for your use*, but you should be able to view its progress along the way. 
+  * After hitting the link, *it takes the Binder service a few minutes to generate the Github repository for your use*, but you should be able to view its progress along the way in the Build Log.
   * If you navigate away from the browser tab, the link will time out at some point and need to be **regenerated** by clicking [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) again.
 
 
