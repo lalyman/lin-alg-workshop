@@ -40,12 +40,10 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 ### 1.1. Introduction
 
 **Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
-
 <p align = "center">
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="\large y\approx \sum_{j=1}^p \beta_j x_j" />
 </p>
-
-for some real-valued _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>  &mdash; we take several measurements of the explanatory variables _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable $y$. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
+for some real-valued _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>  &mdash; we take several measurements of the explanatory variables _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable _y_. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
 
 ![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
 
@@ -53,13 +51,13 @@ The dots in blue represent the measurements of _(x,y)_, which are our *data poin
 
 **Principal component analysis (pca)** is a linear model that estimates the response variable _y_ in terms of *feature variables* (or *principal components*)  _v_<sub>1</sub>, ..., _v_<sub>m</sub>, where each feature _v_<sub>i</sub> is itself a linear combination of the _x_<sub>1</sub>, ..., _x_<sub>p</sub> and _m_ &le; _p_. We can think of this as a change of coordinates that re-expresses _y_ in terms of a new, more minimal coordinate system. 
 
-As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sub>1</sub> and height _x_<sub>2</sub>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sub>1</sub> + 2 _x_<sub>2</sub> (which of course we know). However, pca might define the *single* princical componet $v_1 = x_1 + x_2$, in which case we would have $y = 2 v_1$ in terms of this new variable. This is an example of *dimension reduction* for PCA, since we reduced the number of independent, explanatory variables from 2 to 1. 
+As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sub>1</sub> and height _x_<sub>2</sub>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sub>1</sub> + 2 _x_<sub>2</sub> (which of course we know). However, pca might define the *single* princical componet _v_<sub>1</sub> = _x_<sub>1</sub> + _x_<sub>2</sub>, in which case we would have _y_ = 2 _v_<sub>1</sub> in terms of this new variable. This is an example of *dimension reduction* for PCA, since we reduced the number of independent, explanatory variables from 2 to 1. 
 
-However, sometimes pca cannot perform dimension reduction, so the number of principal components $m$ is the same as the number of original explanatory variables $p$ in OLS. What happens then? Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of $y$ and the $y$-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
+However, sometimes pca cannot perform dimension reduction, so the number of principal components _m_ is the same as the number of original explanatory variables _p_ in OLS. What happens then? Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of _y_ and the _y_-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
 
 1. OLS defines error via the distance between a data point and the fitted line in the direction *parallel to the dependent variable axis*. So OLS picks the (unique) fitted line such that the sum of squared distances parallel to the dependent axis is minimized.
-    1. If $y \sim x$ ($y$ is regressed on $x$), we regard $y$ as the response variable in the data points $(x, y)$. OLS picks the fitted line such that the sum of *vertical distances* between each data point and the line is as small as possible.
-    2. If $x \sim y$ ($x$ is regressed on $y$), we regard $x$ as the response variable in the data points $(x, y)$. OLS selects the fitted line such that the the sum of *horizontal distances* between each data point and the line is minimized.
+    1. If _y_ ~ _x_ (_y_ is regressed on _x_), we regard _y_ as the response variable in the data points _(x, y)_. OLS picks the fitted line such that the sum of *vertical distances* between each data point and the line is as small as possible.
+    2. If _x_ ~ _y_ (_x_ is regressed on _y_), we regard _x_ as the response variable in the data points _(x, y)_. OLS selects the fitted line such that the the sum of *horizontal distances* between each data point and the line is minimized.
 
 2. In contrast, pca defines error via the *perpendicular distance* between a data point and the fitted line. That is, pca minimizes the orthogonal projections of the linear approximation onto the actual data.
 
@@ -86,7 +84,7 @@ Suppose we consider resting heart rate (HR) and diastolic blood pressure (BP) da
 
 
 
-For OLS, there is $p = 1$ explanatory variable. Similarly, pca determines its linear model from $m = 1$ principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
+For OLS, there is _p = 1_ explanatory variable. Similarly, pca determines its linear model from _m = 1_ principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
 
 <p align = "center">
 <img src="one_plot-centered-heart-data.png" alt="drawing" align = "center" />
