@@ -27,7 +27,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
   
   
   
-2. Click on the following Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) or click on the link [https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) directly. 
+2. Click on the following Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) or the link [https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD](https://mybinder.org/v2/gh/lalyman/lin-alg-workshop/HEAD) directly
 
   to play with the notebooks in your browser &mdash; no configurations or installations required. Phew! Keep in mind that you cannot save your changes this way.
   
