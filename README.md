@@ -39,19 +39,19 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 
 ### 1.1. Introduction
 
-**Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>,..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
+**Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
 
 <p align = "center">
-<img src="https://latex.codecogs.com/svg.latex?&space;y\approx \sum_{j=1}^p \beta_j x_j" title="\approx \sum_{j=1}^p \beta_j x_j" />
+<a href="https://www.codecogs.com/eqnedit.php?latex=y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="y\approx \sum_{j=1}^p \beta_j x_j" /></a>
 </p>
 
-for some real-valued _&beta;_<sub>1</sub>,..., _&beta;_<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of _&beta;_<sub>1</sub>,..., _&beta;_<sub>p</sub>  &mdash; we take several measurements of the explanatory variables _x_<sub>1</sub>,..., _x_<sub>p</sub> and the response variable $y$. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
+for some real-valued _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of _&beta;_<sub>1</sub>, ..., _&beta;_<sub>p</sub>  &mdash; we take several measurements of the explanatory variables _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable $y$. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
 
 ![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
 
 The dots in blue represent the measurements of _(x,y)_, which are our *data points.*  The red line is referred to as the *best fit straight line* or the *regression line*; this is the linear relationship that estimates the dependency between _x_ and _y_. One of the most common procedures for picking the regression line is **ordinary least squares** (OLS), which we will discuss later in further detail.
 
-**Principal component analysis (pca)** is a linear model that estimates the response variable _y_ in terms of *feature variables* (or *principal components*)  _v_<sub>1</sub>,..., _v_<sub>m</sub>, where each feature _v_<sub>i</sub> is itself a linear combination of the _x_<sub>1</sub>,..., _x_<sub>p</sub> and _m_ &le; _p_. We can think of this as a change of coordinates that re-expresses _y_ in terms of a new, more minimal coordinate system. 
+**Principal component analysis (pca)** is a linear model that estimates the response variable _y_ in terms of *feature variables* (or *principal components*)  _v_<sub>1</sub>, ..., _v_<sub>m</sub>, where each feature _v_<sub>i</sub> is itself a linear combination of the _x_<sub>1</sub>, ..., _x_<sub>p</sub> and _m_ &le; _p_. We can think of this as a change of coordinates that re-expresses _y_ in terms of a new, more minimal coordinate system. 
 
 As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sub>1</sub> and height _x_<sub>2</sub>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sub>1</sub> + 2 _x_<sub>2</sub> (which of course we know). However, pca might define the *single* princical componet $v_1 = x_1 + x_2$, in which case we would have $y = 2 v_1$ in terms of this new variable. This is an example of *dimension reduction* for PCA, since we reduced the number of independent, explanatory variables from 2 to 1. 
 
