@@ -11,7 +11,7 @@ you have the options discussed in the following section.
 * Using these modules interactively is **not required nor essential for you as a course participant**; rather, the option is given as an additional resource. 
 * In the lectures, we will also demonstrate and walk through some of the module highlights on camera.
 
-Each module is meant to be an *introductory, light-hearted, and hands-on exploration* of certain techniques in data science rather than an exhaustive overview of the relevant details. While we will try to make the Jupyter notebooks self-contained in terms of notation and descriptions, they are ultimately supplementary materials that should be viewed in the context of the lectures. 
+Each module is meant to be an *introductory, casual, and hands-on exploration* of certain techniques in data science rather than an exhaustive overview of the relevant details. While we will try to make the Jupyter notebooks self-contained in terms of notation and descriptions, they are ultimately supplementary materials that should be viewed in the context of the lectures. 
 
 
 ## Interactive Modules
@@ -46,35 +46,76 @@ Suppose we can measure _y_ for _m_ different _x_ values. When _x_ and _y_ are  r
 <img src="figs/scatterrandom.svg" alt="linear relationship" width="49%" height="50%"> </img>
 <img src="figs/scatternonlinear.svg" alt="linear relationship" width="49%" height="50%"> </img>
 
-Sometimes a specific relationship between variables is difficult to spot, such as in the first figure. However, in other instances, _y_ seems to relate linearly to _x_; in such cases, we can perform linear regression.
+Sometimes a specific relationship between variables is difficult to spot, such as in the first figure. However, in other instances, there is an approximate linear dependency between _y_ and _x_; in such cases, we can perform linear regression.
 
 ![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
 
 
-**Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
-<p align = "center">
-<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="\large y\approx \sum_{j=1}^p \beta_j x_j" />
-</p>
-for some real-valued &#946;<sub>1</sub>, ..., &#946;<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of &#946;<sub>1</sub>, ..., &#946;<sub>p</sub>  &mdash; 
+**Linear regression** in two-dimensions is a model that assumes a linear relationship between real variables _x_ and _y_ of the general form 
 
-we take several measurements of the explanatory variables parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable  _y_. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
+1. _y_ = _a_ + _b_ _x_ (for which we say **_y_ is regressed on x** i.e. _y_ ~ _x_),
+2. _x_ = _c_ + _d_ _y_ (for which we say **_x_ is regressed on y** i.e. _x_ ~ _y_),
+
+with _c_ = 1/_b_ and _d_ = -1/_b_.
+
+In the last figure, the red line is referred to as the *best fit straight line* or the *regression line*; this is the linear relationship that estimates the dependency between _x_ and _y_. One of the most common procedures for picking the regression line is **ordinary least squares** (OLS), which we will discuss later in further detail.
+
+In higher dimensions, we consider the single output parameter _y_ in terms of *multiple* properties _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup>, each of which is measured $m$ times. Multi-dimensional fitting is much harder, particularly if _y_ = _y_(_x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup>) with _n_ large.
+We often first want to reduce the number of variables that _y_ depends on. In other words, we hope to reduce the number of dimensions. 
+
+As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sup>(1)</sup> and height _x_<sup>(2)</sup>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sup>(1)</sup> + 2 _x_<sup>(2)</sup> (which of course we know). However, we can readily find a good dimension reduction. Since
+$$ y = 2 x^{(1)} + 2 x^{(2)} = 2(x^{(1)} + x^{(2)}),$$
+we can see that _x_<sup>(1)</sup> and _x_<sup>(2)</sup> are not independently important for _y_; all that matters is their sum _x_<sup>(1)</sup> +  _x_<sup>(2)</sup>. We can therefore just work with one parameter _v_<sup>(1)</sup> = _x_<sup>(1)</sup> + _x_<sup>(2)</sup>  and get 
+
+$$ y = 2 v^{(1)} = y(v^{(1)}) .$$
+This is performing a *dimension reduction.* Notice how we reduced the number of independent, explanatory variables from 2 to 1.
+
+Here, you saw that _v_<sup>(1)</sup> can easily be found as a linear
+combination of _x_<sup>(1)</sup> and _x_<sup>(2)</sup>. In general cases, it is not immediately clear what the crticial (linear) combinations of the _x_<sup>(j)</sup> variables may be. As a result, principal component analysis can come to the rescue.
 
 
+### 1.2. Principal Component Analysis
 
+**Principal component analysis (pca)** is a linear model that estimates the response variable _y_ in terms of **feature variables** (or **principal components**)  _v_<sup>(1)</sup>, ..., _v_<sup>(p)</sup>, where each feature _v_<sup>(j)</sup> is itself a linear combination of the _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> and _p_ &le; _n_. That is, the _v_<sup>(j)</sup> are themselves determined by the original _x_<sup>(i)</sup> variables. We can think of this as a change of coordinates that re-expresses _y_ in terms of a new, more minimal coordinate system. In the rectangle example, _v_<sup>(1)</sup> was the principal component. 
 
-The dots in blue represent the measurements of _(x,y)_, which are our *data points.*  The red line is referred to as the *best fit straight line* or the *regression line*; this is the linear relationship that estimates the dependency between _x_ and _y_. One of the most common procedures for picking the regression line is **ordinary least squares** (OLS), which we will discuss later in further detail.
+The lecture describes *why* pca works in greater detail. In the spirit of keeping this light-hearted, here we only explain *what* the pca procedure is. On a high-level, pca is
 
-**Principal component analysis (pca)** is a linear model that estimates the response variable _y_ in terms of *feature variables* (or *principal components*)  _v_<sub>1</sub>, ..., _v_<sub>m</sub>, where each feature _v_<sub>i</sub> is itself a linear combination of the _x_<sub>1</sub>, ..., _x_<sub>p</sub> and _m_ &le; _p_. We can think of this as a change of coordinates that re-expresses _y_ in terms of a new, more minimal coordinate system. 
+* a way of identifying patterns and characterizing the data in such a way as to highlight the similarities and differences
+* a key method in data science for summarizing the information at our disposal
+* a common procedure for finding patterns in high-dimensional data
+* applied in several fields, such as face recognition and image compression.
 
-As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sub>1</sub> and height _x_<sub>2</sub>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sub>1</sub> + 2 _x_<sub>2</sub> (which of course we know). However, pca might define the *single* princical componet _v_<sub>1</sub> = _x_<sub>1</sub> + _x_<sub>2</sub>, in which case we would have _y_ = 2 _v_<sub>1</sub> in terms of this new variable. This is an example of *dimension reduction* for PCA, since we reduced the number of independent, explanatory variables from 2 to 1. 
+Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are each measured $m$ times, we can represent all of our information in the _m_ x _n_ **data matrix** (or **design matrix**) _X_ defined by
 
-However, sometimes pca cannot perform dimension reduction, so the number of principal components _m_ is the same as the number of original explanatory variables _p_ in OLS. What happens then? Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of _y_ and the _y_-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
+$$ X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}. $$
+
+For $n > 1,$ we can then define the **covariance matrix** 
+
+$$ C = \frac{1}{n - 1} X^T X $$
+
+as is often done in introductory statistics. The pca procedure is:
+
+1. Populate the _m_ x _n_ data matrix matrix _X_, where _m_ is the number of measurement types and _n_ is the number of explanatory variables 
+2. Subtract off the mean for each measurement type -- in our case, each column of the data matrix X
+3. Calculate the principal components and PC scores by
+ * Performing an SVD on X (so $X = U \Sigma V^T$), or
+ * Performing an eigendecomposition on the covariance matrix _C_ 
+
+The **principal component (PC) scores** are the singular values of _X_; equivalently, they are the square roots of the eigenvalues of _C_, which are guaranteed to be non-negative real numbers by the symmetry of _C_. The PC scores are ranked from largest to smallest, where the "first" PC score refers to the largest value. The **principal components** are the eigenvectors associated with the *nonzero* PC scores (_p_ total), where the "first" principal component is the eigenvector corresponding to the first PC score. These are the _v_<sup>(1)</sup>, ..., _v_<sup>(p)</sup>.
+
+For models of the form _y_ = _a_ + b _x_, there is really no need to perform dimension reduction, since the problem is already low dimensional. However, pca can *still* be handy, since it also helps determine what the principal relations are in a dataset. For such low dimensional examples, principal component analysis is *not* identical to ordinary least squares or linear regression.
+
+### 1.3. Difference Between PCA and OLS
+
+Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of _y_ and the _y_-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
 
 1. OLS defines error via the distance between a data point and the fitted line in the direction *parallel to the dependent variable axis*. So OLS picks the (unique) fitted line such that the sum of squared distances parallel to the dependent axis is minimized.
     1. If _y_ ~ _x_ (_y_ is regressed on _x_), we regard _y_ as the response variable in the data points _(x, y)_. OLS picks the fitted line such that the sum of *vertical distances* between each data point and the line is as small as possible.
     2. If _x_ ~ _y_ (_x_ is regressed on _y_), we regard _x_ as the response variable in the data points _(x, y)_. OLS selects the fitted line such that the the sum of *horizontal distances* between each data point and the line is minimized.
 
 2. In contrast, pca defines error via the *perpendicular distance* between a data point and the fitted line. That is, pca minimizes the orthogonal projections of the linear approximation onto the actual data.
+
+Unlike linear regression, pca is not checking which characteristics are redundant and discarding them. Instead, pca constructs *new* characteristics that summarize the data well; in particular, these characteristics linear combinations of the original variables. 
 
 To establish the visual and geometric intuition at the heart of these methods, we consider the following numerical example. Aftewards, we explain more specifically how the methods are implemented and which objective functions they are optimizing. For the details on how pca is implemented in practice (e.g. How do we determine the feature variables?), see the module `pca-and-cancer-detection`. 
 
