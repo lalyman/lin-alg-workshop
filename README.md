@@ -43,7 +43,7 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 <p align = "center">
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="\large y\approx \sum_{j=1}^p \beta_j x_j" />
 </p>
-for some real-valued &beta;<sub>1</sub>, ..., &beta;<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of &beta;<sub>1</sub>, ..., &beta;<sub>p</sub>  &mdash; we take several measurements of the explanatory variables  _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable _y_. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
+for some real-valued &#946;<sub>1</sub>, ..., &#946;<sub>p</sub>. To determine the specifics of this linear estimate &mdash; that is, to figure out the values of &#946;<sub>1</sub>, ..., &#946;<sub>p</sub>  &mdash; we take several measurements of the explanatory variables parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable  _y_. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
 
 ![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
 
