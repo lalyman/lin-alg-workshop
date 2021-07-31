@@ -39,6 +39,18 @@ To adjust code, execute chunks of Python, reproduce results, and play with figur
 
 ### 1.1. Introduction
 
+In several situations in science and engineering, we encounter relationships between an input parameter _x_ and an observed output parameter _y_. For instance, _x_ could represent the number of years you have been learning data science, and _y_ could denote your interest in this linear algebra workshop. Perhaps _x_ is the number of hours you have studied linear algebra, and _y_ is the probability of you dreaming about matrices. The possibilities are endless. 
+
+Suppose we can measure _y_ for _m_ different _x_ values. When _x_ and _y_ are  real scalars, we can then plot data points (x<sub>i</sub>, y<sub>i</sub>) in the usual two-dimensional way. 
+
+<img src="figs/scatterrandom.svg" alt="linear relationship" width="49%" height="50%"> </img>
+<img src="figs/scatternonlinear.svg" alt="linear relationship" width="49%" height="50%"> </img>
+
+Sometimes a specific relationship between variables is difficult to spot, such as in the first figure. However, in other instances, _y_ seems to relate linearly to _x_; in such cases, we can perform linear regression.
+
+![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
+
+
 **Linear regression** is a model that assumes a linear relationship between some input parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the single output parameter _y_. More specifically, it assumes that the output variable _y_ can be well estimated by a linear combination of the input variables 
 <p align = "center">
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y\approx&space;\sum_{j=1}^p&space;\beta_j&space;x_j" title="\large y\approx \sum_{j=1}^p \beta_j x_j" />
@@ -47,7 +59,8 @@ for some real-valued &#946;<sub>1</sub>, ..., &#946;<sub>p</sub>. To determine t
 
 we take several measurements of the explanatory variables parameters _x_<sub>1</sub>, ..., _x_<sub>p</sub> and the response variable  _y_. If the number of parameters _p_ = 1, this means that there is an approximate linear dependency between _y_ and a single input variable _x_, as shown in the following image.
 
-![Linear Regression](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linear_regression.svg)
+
+
 
 The dots in blue represent the measurements of _(x,y)_, which are our *data points.*  The red line is referred to as the *best fit straight line* or the *regression line*; this is the linear relationship that estimates the dependency between _x_ and _y_. One of the most common procedures for picking the regression line is **ordinary least squares** (OLS), which we will discuss later in further detail.
 
