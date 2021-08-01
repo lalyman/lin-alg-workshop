@@ -112,6 +112,8 @@ as is often done in introductory statistics. The pca procedure is:
  * Performing an SVD on _X_, or
  * Performing an eigendecomposition on the covariance matrix _C_ 
 
+For the details on when we use an SVD versus an eigendecomposition in the third step, see the module `pca-and-cancer-detection`. 
+
 The **principal component (PC) scores** are the singular values of _X_; equivalently, they are the square roots of the eigenvalues of _C_, which are guaranteed to be non-negative real numbers by the symmetry of _C_. The PC scores are ranked from largest to smallest, where the "first" PC score refers to the largest value. The **principal components** are the eigenvectors associated with the *nonzero* PC scores (_p_ total), where the "first" principal component is the eigenvector corresponding to the first PC score. These are the _v_<sup>(1)</sup>, ..., _v_<sup>(p)</sup>.
 
 For models of the form _y_ = _a_ + b _x_, there is really no need to perform dimension reduction, since the problem is already low dimensional. However, pca can *still* be handy, since it also helps determine what the principal relations are in a dataset. For such low dimensional examples, principal component analysis is *not* identical to ordinary least squares or linear regression.
@@ -128,9 +130,11 @@ Despite common misconception, the linear models produced by linear regression an
 
 Unlike linear regression, pca is not checking which characteristics are redundant and discarding them. Instead, pca constructs *new* characteristics that summarize the data well; in particular, these characteristics linear combinations of the original variables. 
 
-To establish the visual and geometric intuition at the heart of these methods, we consider the following numerical example. Aftewards, we explain more specifically how the methods are implemented and which objective functions they are optimizing. For the details on how pca is implemented in practice (e.g. How do we determine the feature variables?), see the module `pca-and-cancer-detection`. 
+To establish the visual and geometric intuition at the heart of these methods, we consider the following numerical example.
 
-### 1.2. Numerical Application & Example: Heart health
+
+
+### 1.4. Numerical Application & Example: Heart health
 
 All code for this section is contained in the Jupyter notebook `pca-vs-linear-regression`.
 
