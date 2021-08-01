@@ -98,7 +98,7 @@ Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are e
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;X_{ij}&space;=&space;x_i^{(j)}&space;:=&space;j\text{th&space;measurement&space;of&space;the&space;$i$th&space;property}." title="\large X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}." />
 </p>
 
-For _n_&\ge; 1, we can then define the **covariance matrix** 
+For _n_ &ge; 1, we can then define the **covariance matrix** 
 
 <p align = "center">
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;C&space;=&space;\frac{1}{n-1}X^T&space;X" title="\large C = \frac{1}{n - 1} X^T X" />
