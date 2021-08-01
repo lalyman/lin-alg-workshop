@@ -94,7 +94,7 @@ The lecture describes *why* pca works in greater detail. In the spirit of keepin
 
 Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are each measured $m$ times, we can represent all of our information in the _m_ x _n_ **data matrix** (or **design matrix**) _X_ defined by
 
-$$ X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}. $$
+<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;X_{ij}&space;=&space;x_i^{(j)}&space;:=&space;j\text{th&space;measurement&space;of&space;the&space;$i$th&space;property}." title="\large X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}." />
 
 For $n > 1,$ we can then define the **covariance matrix** 
 
