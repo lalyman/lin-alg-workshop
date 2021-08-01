@@ -114,7 +114,8 @@ Then we define the **covariance matrix**
  * performing an SVD on _X_, or
  * performing an eigendecomposition on the covariance matrix _C_ 
 
-![pca-alg](figs/pca-alg.png)
+![pca-alg](figs/pca-alg-from-pdf.pdf)
+
 For the details on when we use an SVD versus an eigendecomposition in the third step, see the module `pca-and-cancer-detection`. 
 
 The **principal component (PC) scores** are the nonzero singular values &sigma;<sub>1</sub>, ..., &sigma;<sub>p</sub> of _X_; equivalently, they are the square roots of the nonzero eigenvalues of _C_, which are guaranteed to be non-negative real numbers since _C_ is symmetric positive semi-definite. The PC scores are ranked from largest to smallest (&sigma;<sub>1</sub> &ge; ... &ge; &sigma;<sub>p</sub>), where the "first" PC score &sigma;<sub>1</sub> refers to the largest value. The **principal components** are the eigenvectors associated with the _p_ total PC scores, where the _j_-th principal component is the eigenvector _v_<sup>(j)</sup> corresponding to &sigma;<sub>j</sub>. *The larger a single PC score is relative to the other PC scores, the more important its associated principal component is for characterizing the given dataset.* For instance, if  &sigma;<sub>1</sub> is far larger than the &sigma;<sub>2</sub>, ..., &sigma;<sub>p</sub>, then the dataset is best summarized by the feature described by the first principal component.
