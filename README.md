@@ -158,7 +158,7 @@ Suppose we consider resting heart rate (HR) and diastolic blood pressure (BP) da
 For OLS, there is _p_ = 1 explanatory variable. Similarly, pca determines its linear model from _m_ = 1 principal component. The following plot shows the different linear approximations selected by regression and principal component analysis. (Note that the plotted data is **centered** in the sense that we translated the point cloud to the origin; this does not change the slopes of the linear fits).
 
 <p align = "center">
-<img src="one-plot-centered-heart-data.png" alt="drawing" align = "center" />
+<img src="figs/one-plot-centered-heart-data.png" alt="drawing" align = "center" />
 </p>
 
 In particular, 
@@ -168,8 +168,8 @@ In particular,
 3. pca minimizes perpendicular projections/errors.
 
 <p align = "center">
-<img src="centered-heart-data.png" alt="drawing" align = "center" />
+<img src="figs/centered-heart-data.png" alt="drawing" align = "center" />
 </p>
 
 We can see below that when defining our errors/residuals via OLS, the sum of squared errors is minimized precisely when the linear model matches the regression line.
-![OLS_1_gif](./animation.gif)
+![OLS_1_gif](./figs/animation.gif)
