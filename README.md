@@ -111,8 +111,8 @@ Then we define the **covariance matrix**
 1. Populate the _m_ x _n_ data matrix matrix _X_, where _m_ is the number of measurements and _n_ is the number of explanatory variables 
 2. Subtract off the mean for each variable/property being measured (in our case, each column of the data matrix _X_)
 3. Calculate the principal components and PC scores by
- * Performing an SVD on _X_, or
- * Performing an eigendecomposition on the covariance matrix _C_ 
+ * performing an SVD on _X_, or
+ * performing an eigendecomposition on the covariance matrix _C_ 
 
 For the details on when we use an SVD versus an eigendecomposition in the third step, see the module `pca-and-cancer-detection`. 
 
