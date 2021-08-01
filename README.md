@@ -64,10 +64,17 @@ In higher dimensions, we consider the single output parameter _y_ in terms of *m
 We often first want to reduce the number of variables that _y_ depends on. In other words, we hope to reduce the number of dimensions. 
 
 As a contrived example, suppose we are trying to determine the perimeter _y_ of a rectangle in terms of the explanatory variables width _x_<sup>(1)</sup> and height _x_<sup>(2)</sup>. Linear regression via OLS would give us the best fit line _y_ = 2 _x_<sup>(1)</sup> + 2 _x_<sup>(2)</sup> (which of course we know). However, we can readily find a good dimension reduction. Since
-$$ y = 2 x^{(1)} + 2 x^{(2)} = 2(x^{(1)} + x^{(2)}),$$
+
+<p align = "center">
+<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y&space;=&space;2x^{(1)}&space;+&space;2x^{(2)}&space;=&space;2(x^{(1)}&space;+&space;x^{(2)})," title="\large y = 2 x^{(1)} + 2 x^{(2)} = 2(x^{(1)} + x^{(2)})" />
+</p>
+
 we can see that _x_<sup>(1)</sup> and _x_<sup>(2)</sup> are not independently important for _y_; all that matters is their sum _x_<sup>(1)</sup> +  _x_<sup>(2)</sup>. We can therefore just work with one parameter _v_<sup>(1)</sup> = _x_<sup>(1)</sup> + _x_<sup>(2)</sup>  and get 
 
-$$ y = 2 v^{(1)} = y(v^{(1)}) .$$
+<p align = "center">
+<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;y&space;=&space;2v^{(1)}&space;=&space;y(v^{(1)})." title="y = 2 v^{(1)} = y(v^{(1)})"/>
+</p>
+
 This is performing a *dimension reduction.* Notice how we reduced the number of independent, explanatory variables from 2 to 1.
 
 Here, you saw that _v_<sup>(1)</sup> can easily be found as a linear
