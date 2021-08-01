@@ -98,27 +98,32 @@ Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are e
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;X_{ij}&space;=&space;x_i^{(j)}&space;:=&space;j\text{th&space;measurement&space;of&space;the&space;$i$th&space;property}." title="\large X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}." />
 </p>
 
-For _n_ &ge; 1, we can then define the **covariance matrix** 
+Then we define the **covariance matrix** 
 
 <p align = "center">
-<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;C&space;=&space;\frac{1}{n-1}X^T&space;X" title="\large C = \frac{1}{n - 1} X^T X" />
+<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;C&space;=&space;X^T&space;X." title="\large C = \frac{1}{n - 1} X^T X" />
 </p>
 
-as is often done in introductory statistics. The pca procedure is:
-
-1. Populate the _m_ x _n_ data matrix matrix _X_, where _m_ is the number of measurement types and _n_ is the number of explanatory variables 
-2. Subtract off the mean for each measurement type (in our case, each column of the data matrix _X_)
+ Note that we have omitted the scaling factor of 1/(_n_ - 1) (for _n_ &ge; 1) that usually appears in the definition of the covariance matrix in statistics; for the purpose of interpreting pca, we can ignore this factor, as will be described shortly.
+ 
+ The general pca process is as follows. 
+ 
+1. Populate the _m_ x _n_ data matrix matrix _X_, where _m_ is the number of measurements and _n_ is the number of explanatory variables 
+2. Subtract off the mean for each variable/property being measured (in our case, each column of the data matrix _X_)
 3. Calculate the principal components and PC scores by
  * Performing an SVD on _X_, or
  * Performing an eigendecomposition on the covariance matrix _C_ 
 
 For the details on when we use an SVD versus an eigendecomposition in the third step, see the module `pca-and-cancer-detection`. 
 
-The **principal component (PC) scores** are the singular values of _X_; equivalently, they are the square roots of the eigenvalues of _C_, which are guaranteed to be non-negative real numbers since _C_ is symmetric positive semi-definite. The PC scores are ranked from largest to smallest, where the "first" PC score refers to the largest value. The **principal components** are the eigenvectors associated with the *nonzero* PC scores (_p_ total), where the "first" principal component is the eigenvector corresponding to the first PC score. These are the _v_<sup>(1)</sup>, ..., _v_<sup>(p)</sup>.
+The **principal component (PC) scores** are the nonzero singular values &sigma;<sub>1</sub>, ..., &sigma;<sub>p</sub> of _X_; equivalently, they are the square roots of the nonzero eigenvalues of _C_, which are guaranteed to be non-negative real numbers since _C_ is symmetric positive semi-definite. The PC scores are ranked from largest to smallest (&sigma;<sub>1</sub> &ge; ... &ge; &sigma;<sub>p</sub>), where the "first" PC score &sigma;<sub>1</sub> refers to the largest value. The **principal components** are the eigenvectors associated with the _p_ total PC scores, where the _j_th principal component is the eigenvector _v_<sup>(j)</sup> corresponding to &sigma;<sub>j</sub>. *The larger a single PC score is relative to the other PC scores, the more important its associated principal component is for characterizing the given dataset.* For instance, if  &sigma;<sub>1</sub> is far larger than the &sigma;<sub>2</sub>, ..., &sigma;<sub>p</sub>, then the dataset is best summarized by the feature described by the first principal component.
 
-For models of the form _y_ = _a_ + b _x_, there is really no need to perform dimension reduction, since the problem is already low dimensional. However, pca can *still* be handy, since it also helps determine what the principal relations are in a dataset. For such low dimensional examples, principal component analysis is *not* identical to ordinary least squares or linear regression.
+If we had kept the 1/(_n_ -1) in the definition of _C_, then the previous eigendecomposition _Q_&Lambda;_Q_<sup>T</sup> of _C_ would be scaled by this 1/(_n_ -1) factor. However, if we let diagonal &Lambda; absorb this constant, the principal component vectors are unchanged and the *relative* ordering of the PC scores is unaffected. Since the influence of a principal component is determined by the *relative* magnitude of its PC score, omitting this proportionality constant still gives the same interpretation of the dataset.
+
 
 ### 1.3. Difference Between PCA and OLS
+
+For models of the form _y_ = _a_ + _b_ _x_, there is really no need to perform dimension reduction, since the problem is already low dimensional. However, pca can *still* be handy, since it also helps determine what the underlying relations are in a dataset. For such low dimensional examples, principal component analysis is *not* identical to ordinary least squares or linear regression.
 
 Despite common misconception, the linear models produced by linear regression and pca will still differ in this case. In particular, OLS and pca each pick linear models that minimize the "error" between the actual observed values of _y_ and the _y_-values predicted by the model, i.e. the difference between the blue dots and the fitted red line. The key difference is that OLS and pca define "error" differently. Heuristically,
 
