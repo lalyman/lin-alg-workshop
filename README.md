@@ -92,20 +92,24 @@ The lecture describes *why* pca works in greater detail. In the spirit of keepin
 * a common procedure for finding patterns in high-dimensional data
 * applied in several fields, such as face recognition and image compression.
 
-Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are each measured $m$ times, we can represent all of our information in the _m_ x _n_ **data matrix** (or **design matrix**) _X_ defined by
+Given explanatory variables _x_<sup>(1)</sup>, ..., _x_<sup>(n)</sup> that are each measured _m_ times, we can represent all of our information in the _m_ x _n_ **data matrix** (or **design matrix**) _X_ defined by
 
+<p align = "center">
 <img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;X_{ij}&space;=&space;x_i^{(j)}&space;:=&space;j\text{th&space;measurement&space;of&space;the&space;$i$th&space;property}." title="\large X_{i j} = x_i^{(j)} := j\text{th measurement of the $i$th property}." />
+</p>
 
-For $n > 1,$ we can then define the **covariance matrix** 
+For _n_&\ge; 1, we can then define the **covariance matrix** 
 
-$$ C = \frac{1}{n - 1} X^T X $$
+<p align = "center">
+<img src="https://latex.codecogs.com/svg.latex?\dpi{150}&space;\large&space;C&space;=&space;\frac{1}{n-1}X^T&space;X" title="\large C = \frac{1}{n - 1} X^T X" />
+</p>
 
 as is often done in introductory statistics. The pca procedure is:
 
 1. Populate the _m_ x _n_ data matrix matrix _X_, where _m_ is the number of measurement types and _n_ is the number of explanatory variables 
-2. Subtract off the mean for each measurement type -- in our case, each column of the data matrix X
+2. Subtract off the mean for each measurement type (in our case, each column of the data matrix _X_)
 3. Calculate the principal components and PC scores by
- * Performing an SVD on X (so $X = U \Sigma V^T$), or
+ * Performing an SVD on _X_, or
  * Performing an eigendecomposition on the covariance matrix _C_ 
 
 The **principal component (PC) scores** are the singular values of _X_; equivalently, they are the square roots of the eigenvalues of _C_, which are guaranteed to be non-negative real numbers by the symmetry of _C_. The PC scores are ranked from largest to smallest, where the "first" PC score refers to the largest value. The **principal components** are the eigenvectors associated with the *nonzero* PC scores (_p_ total), where the "first" principal component is the eigenvector corresponding to the first PC score. These are the _v_<sup>(1)</sup>, ..., _v_<sup>(p)</sup>.
