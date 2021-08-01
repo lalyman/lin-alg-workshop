@@ -114,7 +114,7 @@ Then we define the **covariance matrix**
  * performing an SVD on _X_, or
  * performing an eigendecomposition on the covariance matrix _C_ 
 
-![pca-alg](figs/pca-alg-from-pdf.pdf)
+![pca-alg](figs/pca-alg.png)
 
 For the details on when we use an SVD versus an eigendecomposition in the third step, see the module `pca-and-cancer-detection`. 
 
