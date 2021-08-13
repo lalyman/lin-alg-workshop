@@ -185,5 +185,5 @@ We can see below that when defining our errors/residuals via OLS, the sum of squ
 </p>
 
 <p align = "center">
-  <img src="pca_animation.gif" alt="pca_animation" align = "center" />
+  <img src="pca_animation2.gif" alt="pca_animation" align = "center" />
 </p>
