@@ -181,5 +181,9 @@ In particular,
 We can see below that when defining our errors/residuals via OLS, the sum of squared errors is minimized precisely when the linear model matches the regression line.
 
 <p align = "center">
-  <img src="./figs/animation.gif" alt="drawing" align = "center" />
+  <img src="./figs/animation.gif" alt="lin_reg_animation" align = "center" />
+</p>
+
+<p align = "center">
+  <img src="pca_animation.gif" alt="pca_animation" align = "center" />
 </p>
