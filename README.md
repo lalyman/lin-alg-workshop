@@ -141,7 +141,7 @@ To establish the visual and geometric intuition at the heart of these methods, w
 
 
 
-### 1.4. Numerical Application & Example: Heart health
+### 1.4. Numerical Application & Example: Heart Health
 
 All code for this section is contained in the Jupyter notebook `pca-vs-linear-regression`.
 
