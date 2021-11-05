@@ -1,3 +1,4 @@
+![summer-workshop-logo](figs/big_logo.png)
 # Linear Algebra Workshop
 This is the accompanying code to the course **Linear Algebra** in the [ICME Summer Workshops in Data Science](https://icme.stanford.edu/icme-summer-workshops-2021-fundamentals-data-science#LinAlg) (2021) series, taught by Professor Margot Gerritsen and Laura Lyman. 
 
